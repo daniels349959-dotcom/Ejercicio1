@@ -1,6 +1,8 @@
 
 # Gestor de Tareas
+Proyecto de introduccion al curso 2027
 
+## Todolist v0.1
 Aplicación de consola en Java para gestionar una lista de tareas. Permite:
 
 - Ver la lista de tareas
@@ -8,18 +10,12 @@ Aplicación de consola en Java para gestionar una lista de tareas. Permite:
 - Eliminar una tarea por su nombre
 - Marcar una tarea como completada
 
-## Requisitos
+## Implementación 
 
-- Java JDK 8 o superior
+se utiliza la **ultima version de java** jdk27
+-Almacenamiento de tareas en memoria usando ``ArrayList``
+-Gestion del UI con ``println`` y ``Scanner``
 
 ## Cómo ejecutar
 
-1. Compila las clases del proyecto:
-   ```
-   javac -d out src/*.java
-   ```
-2. Ejecuta el programa:
-   ```
-   java -cp out Test
-   ```
-3. Sigue el menú interactivo que aparece en consola y elige una opción escribiendo su número (1-5).
+Sigue el menú interactivo que aparece en consola y elige una opción escribiendo su número (1-5).
