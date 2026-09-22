@@ -9,8 +9,11 @@ Aplicación de consola en Java para gestionar una lista de tareas. Permite:
 - Agregar una tarea (nombre y descripción)
 - Eliminar una tarea por su nombre
 - Marcar una tarea como completada
+- Asignar una prioridad alta, media o baja al crear una tarea
+- Filtrar las tareas por prioridad
+- Guardar las tareas actuales en el archivo `tareas.txt`
 
-## Implementación 
+## Implementación
 
 se utiliza la **ultima version de java** jdk27
 -Almacenamiento de tareas en memoria usando ``ArrayList``
@@ -18,4 +21,6 @@ se utiliza la **ultima version de java** jdk27
 
 ## Cómo ejecutar
 
-Sigue el menú interactivo que aparece en consola y elige una opción escribiendo su número (1-5).
+Sigue el menú interactivo que aparece en consola y elige una opción escribiendo su número (1-7).
+
+La opción 6 crea el archivo `tareas.txt` en la carpeta desde la que se ejecuta el programa.

@@ -1,13 +1,15 @@
 public class Tarea {
     String nombre;
     String descripcion;
+    String prioridad;
     boolean estado;
 
     //Constructor con nombre y descripcion, por defecto no estará completada.
 
-    public Tarea(String nombre, String descripcion) {
+    public Tarea(String nombre, String descripcion, String prioridad) {
         this.nombre = nombre;
         this.descripcion = descripcion;
+        this.prioridad = prioridad;
         this.estado = false;
     }
 
@@ -28,6 +30,14 @@ public class Tarea {
         this.descripcion = descripcion;
     }
 
+    public String getPrioridad() {
+        return prioridad;
+    }
+
+    public void setPrioridad(String prioridad) {
+        this.prioridad = prioridad;
+    }
+
     public boolean getEstado() {
         return estado;
     }
@@ -45,7 +55,8 @@ public class Tarea {
         return "====Tarea==== \n" +
                 "Nombre | " + nombre + '\n' +
                 "Descripción | " + descripcion + '\n' +
+                "Prioridad | " + prioridad + '\n' +
                 " Estado | " + mensajeEstado() +"\n"
-               ;
+                ;
     }
 }

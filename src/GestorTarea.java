@@ -1,12 +1,15 @@
 import java.util.ArrayList;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class GestorTarea {
-    Scanner sc = new Scanner(System.in);
+    Scanner sc;
     ArrayList<Tarea> tareas;
 
-    public GestorTarea(ArrayList<Tarea> tareas) {
-        this.tareas = new ArrayList<>();
+    public GestorTarea(ArrayList<Tarea> tareas, Scanner sc) {
+        this.tareas = tareas;
+        this.sc = sc;
     }
 
     private String leerLinea(String mensaje) {
@@ -17,7 +20,7 @@ public class GestorTarea {
 
     private String leerPalabra(String mensaje) {
         System.out.println(mensaje);
-        return sc.next();
+        return sc.nextLine();
     }
 
 
@@ -34,7 +37,15 @@ public class GestorTarea {
         System.out.println("==AGREGAR TAREA==");
         String nombre = leerLinea("Introduce el nombre: ");
         String descripcion = leerLinea("Introduce la descripción: ");
-        Tarea tarea = new Tarea(nombre,descripcion);
+        String prioridad = leerLinea("Introduce la prioridad (alta, media o baja): ");
+
+        while (!prioridad.equalsIgnoreCase("alta") &&
+                !prioridad.equalsIgnoreCase("media") &&
+                !prioridad.equalsIgnoreCase("baja")) {
+            prioridad = leerLinea("Prioridad no válida. Escribe alta, media o baja: ");
+        }
+
+        Tarea tarea = new Tarea(nombre, descripcion, prioridad.toLowerCase());
 
         tareas.add(tarea);
 
@@ -83,6 +94,38 @@ public class GestorTarea {
 
         }
 
+    }
+
+    public void filtrarPorPrioridad() {
+        String prioridad = leerLinea("Introduce la prioridad que quieres ver (alta, media o baja): ");
+        boolean encontrada = false;
+
+        for (Tarea tarea : tareas) {
+            if (tarea.getPrioridad().equalsIgnoreCase(prioridad)) {
+                System.out.println(tarea);
+                encontrada = true;
+            }
+        }
+
+        if (!encontrada) {
+            System.out.println("No hay tareas con esa prioridad.\n");
+        }
+    }
+
+    public void guardarTareas() {
+        try {
+            FileWriter archivo = new FileWriter("tareas.txt");
+
+            for (Tarea tarea : tareas) {
+                archivo.write(tarea.toString());
+                archivo.write(System.lineSeparator());
+            }
+
+            archivo.close();
+            System.out.println("Tareas guardadas en tareas.txt");
+        } catch (IOException e) {
+            System.out.println("No se han podido guardar las tareas.");
+        }
     }
 
 
